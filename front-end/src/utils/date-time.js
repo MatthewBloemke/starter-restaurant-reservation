@@ -19,6 +19,14 @@ function asDateString(date) {
 }
 
 /**
+ * 
+ * @param date
+ * @returns {string}
+ */
+function asTimeString(date) {
+  return date.getHours() + ":" + date.getMinutes();
+}
+/**
  * Format a date string in ISO-8601 format (which is what is returned from PostgreSQL) as YYYY-MM-DD.
  * @param dateString
  *  ISO-8601 date string
@@ -49,6 +57,13 @@ export function today() {
   return asDateString(new Date());
 }
 
+/**
+ * 
+ * @returns {*} 
+ */
+export function now() {
+  return asTimeString(new Date())
+}
 /**
  * Subtracts one day to the specified date and return it in as YYYY-MM-DD.
  * @param currentDate
