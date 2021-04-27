@@ -1,13 +1,13 @@
 import React from "react";
-import NewReservation from "../NewReservation/NewReservation"
+import NewReservation from "../reservations/NewReservation"
 import { Redirect, Route, Switch } from "react-router-dom";
 import Dashboard from "../dashboard/Dashboard";
 import NotFound from "./NotFound";
 import { today } from "../utils/date-time";
 import NewTable from "../tables/NewTable"
-import SeatReservation from "../NewReservation/SeatReservation";
+import SeatReservation from "../reservations/SeatReservation";
 import Search from "../phoneSearch/Search"
-import EditReservation from "../NewReservation/EditReservation";
+import EditReservation from "../reservations/EditReservation";
 
 /**
  * Defines all the routes for the application.

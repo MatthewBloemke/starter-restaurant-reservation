@@ -4,7 +4,7 @@ import ErrorAlert from "../layout/ErrorAlert";
 import useQuery from "../utils/useQuery"
 import {next, previous} from "../utils/date-time"
 import {useHistory} from "react-router-dom"
-import ReservationsList from "../layout/ReservationsList"
+import ReservationsList from "../reservations/ReservationsList"
 import TablesList from "../tables/TablesList"
 import "../dashboard/dashboard.css"
 /**
