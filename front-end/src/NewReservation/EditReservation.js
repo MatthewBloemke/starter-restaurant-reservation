@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
-import {useHistory} from "react-router-dom"
+import {useHistory, useParams} from "react-router-dom"
 import {now, today, } from "../utils/date-time"
 import ErrorAlert from "../layout/ErrorAlert"
-import "./newReservation.css"
+import { listSingleRes } from "../utils/api";
 
-function NewReservation() {
+function EditReservation () {
+    const params = useParams()
     const history = useHistory()
     const initialFormState = {
         first_name: "",
         last_name: "",
         mobile_number: "",
-        reservation_date: today(),
-        reservation_time: now(),
+        reservation_date: "",
+        reservation_time: "",
         people: "",
         status: "booked"
     }
@@ -52,32 +53,7 @@ function NewReservation() {
             errorList.push({message: "That reservation is before we are open"})
         } else if (formData.reservation_time > "21:30") {
             errorList.push({message: "That reservation is after we close"})
-        }
-        if (errorList.length) {
-            setErrorMessage(errorList[0])
-            return null;
-        } else if (invalidFields.length ) {
-            setErrorMessage({message: `Invalid field(s): ${invalidFields.join(", ")}`})
-        } else {
-            if (!errorMessage) {
-                const requestOptions = {
-                    method:'POST',
-                    headers: {"Content-Type": "application/json"},
-                    body: JSON.stringify({data: formData})
-                }
-
-
-                await fetch('http://localhost:5000/reservations', requestOptions)
-
-                history.push(`/dashboard?date=${formData.reservation_date}`);
-            }
-
-        }
-    }
-    const cancel = () => {
-        history.goBack();
-    }
-    useEffect(() => {
+        }        
         let [ year, month, day ] = formData.reservation_date.split("-");
         let testDate = new Date(year, month - 1, day)
         if (formData.reservation_date<today() && testDate.getDay() === 2) {
@@ -89,11 +65,41 @@ function NewReservation() {
         } else {
             setErrorMessage(null)
         }
-    }, [formData, formData.first_name, formData.last_name, formData.mobile_number, formData.people, formData.reservation_date, formData.reservation_time])
+        if (errorList.length) {
+            setErrorMessage(errorList[0])
+            return null;
+        } else if (invalidFields.length ) {
+            setErrorMessage({message: `Invalid field(s): ${invalidFields.join(", ")}`})
+        } else {
+            if (!errorMessage) {
+                const requestOptions = {
+                    method:'PUT',
+                    headers: {"Content-Type": "application/json"},
+                    body: JSON.stringify({data: formData})
+                }
+
+
+                await fetch(`http://localhost:5000/reservations/${formData.reservation_id}`, requestOptions)
+
+                console.log("submitted")
+                history.push(`/dashboard?date=${formData.reservation_date}`);
+            }
+
+        }
+    }
+    const cancel = () => {
+        history.goBack();
+    }
+    useEffect(() => {
+        const abortController = new AbortController()
+        listSingleRes(params.reservation_id, abortController.signal)
+            .then(setFormData)
+        return () => abortController.abort()
+    }, [params.reservation_id])
 
     return (
         <main>
-            <h1>New Reservations</h1>
+            <h1>Edit Reservation</h1>
                 <form onSubmit = {handleSubmit}>
                     <div className="row">
                         <div className="col-md-3">
@@ -125,4 +131,4 @@ function NewReservation() {
     )
 }
 
-export default NewReservation;
+export default EditReservation

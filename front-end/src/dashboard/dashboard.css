@@ -5,3 +5,8 @@ table, th, td {
 button {
     margin-right: 5px;
 }
+
+a:hover, a {
+    text-decoration: none;
+    color: black;
+}

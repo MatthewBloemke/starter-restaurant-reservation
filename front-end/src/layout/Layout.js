@@ -12,8 +12,9 @@ import "./Layout.css";
  * @returns {JSX.Element}
  */
 function Layout() {
+  const height ={height: "100vh"}
   return (
-    <div className="container-fluid">
+    <div style={height} className="container-fluid">
       <div className="row h-100">
         <div className="col-md-2 side-bar">
           <Menu />
