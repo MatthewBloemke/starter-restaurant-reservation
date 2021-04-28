@@ -1,12 +1,46 @@
-table, th, td {
-    border: 1px solid black;
-}
-
 button {
     margin-right: 5px;
+}
+.btn-info {
+    margin-top: 5px;
 }
 
 a:hover, a {
     text-decoration: none;
     color: black;
+}
+
+h1, h4 {
+    text-align: center;
+}
+
+.buttonContainer {
+    margin-top: 8px;
+    text-align: center;
+}
+
+.tables, .reservations {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 10px;
+}
+
+h5 {
+    margin-right: 20px;
+}
+
+p, h5 {
+    display: inline;
+}
+
+.btn-warning {
+    margin-top: 5px;
+}
+
+.resContainers {
+    display: flex;
+    justify-content: space-evenly;
+}
+.singleTable p {
+    margin-right:50px;
 }

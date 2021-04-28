@@ -30,6 +30,7 @@ function NewReservation() {
         })
 
     }
+
     async function handleSubmit (event) {
         const errorList = [];
         const invalidFields = []
@@ -93,31 +94,37 @@ function NewReservation() {
 
     return (
         <main>
-            <h1>New Reservations</h1>
+            <h1>New Reservation</h1>
                 <form onSubmit = {handleSubmit}>
                     <div className="row">
-                        <div className="col-md-3">
+                        <div className="col-md-3 labels">
                             <label htmlFor="first_name">First Name:</label> <br/>                
                             <label htmlFor="last_name">Last Name:</label> <br/> 
                             <label htmlFor="mobile_number">Mobile Number:</label> <br/> 
+                            <label htmlFor="people">Party Size:</label> <br/> 
                             <label htmlFor="reservation_date">Reservation Date:</label> <br/> 
                             <label htmlFor="reservation_time">Reservation Time:</label> <br/> 
-                            <label htmlFor="people">Party Size:</label> <br/> 
+                            
                         </div>
-                        <div className="col-md-3">
-                            <input type="text" id="first_name" name="first_name" value={formData.first_name} onChange = {handleChange}/> <br/>
-                            <input type="text" id="last_name" name="last_name" value={formData.last_name} onChange = {handleChange}/> <br/>
-                            <input placeholder="123-456-7890"type="text" id="mobile_number" name="mobile_number" value={formData.mobile_number} onChange = {handleChange}/> <br/>                 
+                        <div className="col-md-3 inputs">
+                            <input placeholder="first name" type="text" id="first_name" name="first_name" value={formData.first_name} onChange = {handleChange}/> <br/>
+                            <input placeholder="last name" type="text" id="last_name" name="last_name" value={formData.last_name} onChange = {handleChange}/> <br/>
+                            <input placeholder="123-456-7890"type="text" id="mobile_number" name="mobile_number" value={formData.mobile_number} onChange = {handleChange}/> <br/>
+                            <input placeholder="1" type="number" id="people" name="people" value={formData.people} onChange = {handleChange}/> <br/>                 
                             <input type="date" id="reservation_date" name="reservation_date" value={formData.reservation_date} onChange = {handleChange}/> <br/>                  
                             <input type="time" id="reservation_time" name="reservation_time" value={formData.reservation_time} onChange = {handleChange}/> <br/>                
-                            <input type="number" id="people" name="people" value={formData.people} onChange = {handleChange}/> <br/>
-                        </div>
+                            
+                        </div>                    
+
+                    </div>
+                    <div className="row">
+                        <button type="submit" className="btn btn-success">Submit</button>
+                        <button type="button" className="btn btn-danger" onClick={cancel}>Cancel</button>                        
                     </div>
 
                     
 
-                    <button type="submit" className="btn btn-success">Submit</button>
-                    <button type="button" className="btn btn-danger" onClick={cancel}>Cancel</button>
+
                 </form>  
 
             <ErrorAlert error={errorMessage} />

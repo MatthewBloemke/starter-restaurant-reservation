@@ -35,9 +35,9 @@ function Search() {
         <main>
             <h1>Search by Phone number</h1>
             <form onSubmit={handleSubmit}>
-                <label htmlFor="mobile_number">Enter a customer's phone number</label>
-                <input onChange={handleChange} name="mobile_number" />
-                <button type="submit">Find</button>                
+                <label htmlFor="mobile_number">Enter a customer's phone number:</label> <br/>
+                <input onChange={handleChange} name="mobile_number" /> <br/>
+                <button className="btn btn-success" type="submit">Find</button>                
             </form>
             <ErrorAlert error={reservationsError}/>
             {reservations.length ? <ReservationsList reservations={reservations} page="search" loadResults={loadResults}/> : null}

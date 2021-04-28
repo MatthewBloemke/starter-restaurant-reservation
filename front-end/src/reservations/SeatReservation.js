@@ -3,6 +3,7 @@ import {useParams, useHistory} from "react-router-dom"
 import ErrorAlert from "../layout/ErrorAlert";
 import {listTables, listSingleRes} from "../utils/api"
 import TablesOptions from "../tables/TablesOptions"
+import "./seatReservation.css"
 
 const SeatReservation = () => {
     const history = useHistory()
@@ -64,7 +65,26 @@ const SeatReservation = () => {
             <h1>Choose a table to seat Reservation {params.reservation_id} at.</h1>
             <ErrorAlert error={tablesError}/>
             <ErrorAlert error={reservationError}/>
-            <table>
+            <div className="reservations">
+                <div className="alert alert-secondary singleRes" key={reservation.reservation_id}>
+                    <div className="resContainers">
+                        <h5>{reservation.first_name} {reservation.last_name}</h5>
+                                                
+                    </div>
+                    <div className="resContainers">
+                        <p><img src="https://img.icons8.com/android/20/000000/phone.png" alt="phone"/> {reservation.mobile_number}</p>
+                        <p><img src="https://img.icons8.com/metro/20/000000/date-to.png" alt="date"/> {reservation.reservation_date}</p>            
+                    </div>
+                    <div className="resContainers">
+                        <p><img src="https://img.icons8.com/metro/20/000000/time.png" alt="time"/> {tempTime}</p> <br/>            
+                        <p><img src="https://img.icons8.com/material-sharp/20/000000/conference-call.png" alt="capacity"/> {reservation.people}</p>               
+                    </div>
+                    <div className="resContainers">              
+                    </div>
+                </div>
+            </div>
+
+            {/* <table>
                 <thead>
                     <tr key="Header">
                         <th>First Name</th>
@@ -86,9 +106,9 @@ const SeatReservation = () => {
                     </tr>                    
                 </tbody>
 
-            </table>
+            </table> */}
             <form onSubmit={handleSubmit}>
-                <select onChange={handleChange} name="table_id">
+                <select className="form-select form-select-lg" aria-label="disabled .form-select-lg example" onChange={handleChange} name="table_id">
                     <option>Select Table</option>
                     <TablesOptions tables={tables}/>
                 </select> <br/>

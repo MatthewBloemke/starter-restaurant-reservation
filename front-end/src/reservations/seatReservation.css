@@ -1,0 +1,15 @@
+.reservations {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.resContainers {
+    display: flex;
+    justify-content: space-evenly;
+    margin-right: 5px;
+}
+
+p, form {
+    text-align: center;
+    margin-right: 10px;
+}
