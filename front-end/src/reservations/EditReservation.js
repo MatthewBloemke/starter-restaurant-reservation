@@ -6,6 +6,7 @@ import { listSingleRes } from "../utils/api";
 
 function EditReservation () {
     const {REACT_APP_API_BASE_URL} = process.env
+    console.log(REACT_APP_API_BASE_URL)
     const params = useParams()
     const history = useHistory()
     const initialFormState = {
@@ -79,10 +80,10 @@ function EditReservation () {
                     body: JSON.stringify({data: formData})
                 }
                 
-                await fetch(`${REACT_APP_API_BASE_URL}/${formData.reservation_id}`, requestOptions)
+                await fetch(`${REACT_APP_API_BASE_URL}/reservations/${formData.reservation_id}`, requestOptions)
 
                 console.log("submitted")
-                history.push(`${REACT_APP_API_BASE_URL}/dashboard?date=${formData.reservation_date}`);
+                history.push(`/dashboard?date=${formData.reservation_date}`);
             }
 
         }
@@ -106,17 +107,19 @@ function EditReservation () {
                             <label htmlFor="first_name">First Name:</label> <br/>                
                             <label htmlFor="last_name">Last Name:</label> <br/> 
                             <label htmlFor="mobile_number">Mobile Number:</label> <br/> 
+                            <label htmlFor="people">Party Size:</label> <br/> 
                             <label htmlFor="reservation_date">Reservation Date:</label> <br/> 
                             <label htmlFor="reservation_time">Reservation Time:</label> <br/> 
-                            <label htmlFor="people">Party Size:</label> <br/> 
+                            
                         </div>
                         <div className="col-md-3">
                             <input type="text" id="first_name" name="first_name" value={formData.first_name} onChange = {handleChange}/> <br/>
                             <input type="text" id="last_name" name="last_name" value={formData.last_name} onChange = {handleChange}/> <br/>
-                            <input placeholder="123-456-7890"type="text" id="mobile_number" name="mobile_number" value={formData.mobile_number} onChange = {handleChange}/> <br/>                 
+                            <input placeholder="123-456-7890"type="text" id="mobile_number" name="mobile_number" value={formData.mobile_number} onChange = {handleChange}/> <br/>
+                            <input type="number" id="people" name="people" value={formData.people} onChange = {handleChange}/> <br/>                 
                             <input type="date" id="reservation_date" name="reservation_date" value={formData.reservation_date} onChange = {handleChange}/> <br/>                  
                             <input type="time" id="reservation_time" name="reservation_time" value={formData.reservation_time} onChange = {handleChange}/> <br/>                
-                            <input type="number" id="people" name="people" value={formData.people} onChange = {handleChange}/> <br/>
+                            
                         </div>
                     </div>
 

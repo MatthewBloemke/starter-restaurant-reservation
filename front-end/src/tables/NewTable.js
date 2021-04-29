@@ -56,7 +56,7 @@ const NewTable = () => {
                         <label htmlFor="capacity">Capacity</label>
                     </div>
                     <div className="col-3">
-                        <input onChange={handleChange} value={formData.table_name} type="text" name="table_name"/>
+                        <input onChange={handleChange} value={formData.table_name} type="text" name="table_name"/> <br/>
                         <input onChange={handleChange} value={formData.capacity} type="number" name="capacity"/>
                     </div>
                 </div>

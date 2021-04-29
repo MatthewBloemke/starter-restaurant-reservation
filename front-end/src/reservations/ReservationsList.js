@@ -60,7 +60,7 @@ const ReservationsList = (props) => {
 
     })
     return (
-        <div className="reservations">
+        <div className="reservations flex-grid">
             {reservationsTable}
         </div>
     )
