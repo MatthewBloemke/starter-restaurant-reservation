@@ -61,7 +61,6 @@ function hasValidFields (req, res, next) {
     next()
 }
 async function create (req, res) {
-    console.log("creating")
         const newTable = ({
             table_name,
             capacity,
