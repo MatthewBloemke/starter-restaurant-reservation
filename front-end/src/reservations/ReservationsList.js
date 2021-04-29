@@ -54,24 +54,6 @@ const ReservationsList = (props) => {
                         {seatButton}                        
                     </div>
                 </div>
-
-
-
-
-
-                // <tr key={reservation.reservation_id}>//
-                //     <td>{reservation.first_name}</td>//
-                //     <td>{reservation.last_name}</td>//
-                //     <td>{reservation.mobile_number}</td>
-                //     <td>{reservation.reservation_date}</td>
-                //     <td>{tempTime}</td>
-                //     <td>{reservation.people}</td>
-                    
-                //     <td data-reservation-id-status={reservation.reservation_id}>{reservation.status}</td>
-                //     <td><button><a href={url}>Edit</a></button></td>
-                //     <td><button id={reservation.reservation_id} data-reservation-id-cancel={reservation.reservation_id} onClick={handleCancel}>Cancel</button></td>
-                //     {seatButton}
-                // </tr>
             )            
         }
 
@@ -80,28 +62,6 @@ const ReservationsList = (props) => {
         <div className="reservations">
             {reservationsTable}
         </div>
-
-
-
-
-
-        // <table>
-        //     <thead>
-        //         <tr key="Header">
-        //             <th>First Name</th>
-        //             <th>Last Name</th>
-        //             <th>Mobile Number</th>
-        //             <th>Reservation Date</th>
-        //             <th>Reservation Time</th>
-        //             <th>Party Size</th>
-        //             <th>Reservation Status</th>
-        //         </tr>                
-        //     </thead>
-        //     <tbody>
-        //        {reservationsTable} 
-        //     </tbody>
-            
-        // </table>
     )
 }
 

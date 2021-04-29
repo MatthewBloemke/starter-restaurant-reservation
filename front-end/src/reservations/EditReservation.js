@@ -77,8 +77,7 @@ function EditReservation () {
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({data: formData})
                 }
-
-
+                
                 await fetch(`http://localhost:5000/reservations/${formData.reservation_id}`, requestOptions)
 
                 console.log("submitted")

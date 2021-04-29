@@ -83,30 +83,6 @@ const SeatReservation = () => {
                     </div>
                 </div>
             </div>
-
-            {/* <table>
-                <thead>
-                    <tr key="Header">
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Mobile Number</th>
-                        <th>Reservation Date</th>
-                        <th>Reservation Time</th>
-                        <th>Party Size</th>
-                    </tr>                    
-                </thead>
-                <tbody>
-                    <tr key={reservation.reservation_id}>
-                        <td>{reservation.first_name}</td>
-                        <td>{reservation.last_name}</td>
-                        <td>{reservation.mobile_number}</td>
-                        <td>{reservation.reservation_date}</td>
-                        <td>{tempTime}</td>
-                        <td>{reservation.people}</td>
-                    </tr>                    
-                </tbody>
-
-            </table> */}
             <form onSubmit={handleSubmit}>
                 <select className="form-select form-select-lg" aria-label="disabled .form-select-lg example" onChange={handleChange} name="table_id">
                     <option>Select Table</option>
