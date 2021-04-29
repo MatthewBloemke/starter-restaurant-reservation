@@ -6,6 +6,7 @@ import TablesOptions from "../tables/TablesOptions"
 import "./seatReservation.css"
 
 const SeatReservation = () => {
+    const {REACT_APP_API_BASE_URL} = process.env
     const history = useHistory()
     let tempTime
     const params = useParams()
@@ -55,7 +56,7 @@ const SeatReservation = () => {
                     reservation_id: reservation.reservation_id,
                 }})
             }
-            await fetch(`http://localhost:5000/tables/${table.table_id}/seat`, seatOptions)
+            await fetch(`${REACT_APP_API_BASE_URL}/tables/${table.table_id}/seat`, seatOptions)
             history.push("/dashboard")
         }
 

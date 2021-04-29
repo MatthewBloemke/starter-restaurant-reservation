@@ -1,6 +1,7 @@
 import React from "react"
 
 const ReservationsList = (props) => {
+    const {REACT_APP_API_BASE_URL} = process.env
     const {reservations, page} = props
     const reservationsTable = [];
     async function handleCancel({target}) {
@@ -11,7 +12,7 @@ const ReservationsList = (props) => {
                 headers: {"Content-Type": "application/json"},
                 body: JSON.stringify({data: {status: "cancelled"}})
             }
-            await fetch(`http://localhost:5000/reservations/${target.id}/status`, requestOptions)
+            await fetch(`${REACT_APP_API_BASE_URL}/reservations/${target.id}/status`, requestOptions)
             if (props.loadDashboard)props.loadDashboard();
             if (props.loadResults)props.loadResults();
         }

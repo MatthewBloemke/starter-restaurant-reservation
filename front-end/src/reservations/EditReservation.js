@@ -5,6 +5,7 @@ import ErrorAlert from "../layout/ErrorAlert"
 import { listSingleRes } from "../utils/api";
 
 function EditReservation () {
+    const {REACT_APP_API_BASE_URL} = process.env
     const params = useParams()
     const history = useHistory()
     const initialFormState = {
@@ -78,10 +79,10 @@ function EditReservation () {
                     body: JSON.stringify({data: formData})
                 }
                 
-                await fetch(`http://localhost:5000/reservations/${formData.reservation_id}`, requestOptions)
+                await fetch(`${REACT_APP_API_BASE_URL}/${formData.reservation_id}`, requestOptions)
 
                 console.log("submitted")
-                history.push(`/dashboard?date=${formData.reservation_date}`);
+                history.push(`${REACT_APP_API_BASE_URL}/dashboard?date=${formData.reservation_date}`);
             }
 
         }

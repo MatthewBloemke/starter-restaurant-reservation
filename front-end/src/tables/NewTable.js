@@ -3,6 +3,7 @@ import {useHistory} from "react-router-dom"
 import ErrorAlert from "../layout/ErrorAlert"
 
 const NewTable = () => {
+    const {REACT_APP_API_BASE_URL} = process.env
     const history = useHistory();
     const initialFormState = {
         table_name: "",
@@ -38,7 +39,7 @@ const NewTable = () => {
                     headers: {"Content-Type": "application/json"},
                     body: JSON.stringify({data: formData})
                 }
-                await fetch("http://localhost:5000/tables", requestOptions)
+                await fetch(`${REACT_APP_API_BASE_URL}/tables`, requestOptions)
                 console.log(formData)
                 history.push("/dashboard")
             }

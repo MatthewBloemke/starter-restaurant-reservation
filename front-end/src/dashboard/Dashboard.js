@@ -14,8 +14,8 @@ import "../dashboard/dashboard.css"
  * @returns {JSX.Element}
  */
 
-
 function Dashboard({ date }) {
+  const {REACT_APP_API_BASE_URL} = process.env
   const history = useHistory();
   const [reservations, setReservations] = useState([]);
   const [tables, setTables] = useState([]);
@@ -41,7 +41,7 @@ function Dashboard({ date }) {
     const tableId = target.id;
     const result = window.confirm("Is this table ready to seat new guests? This cannot be undone.")
     if (result) {
-      await fetch(`http://localhost:5000/tables/${tableId}/seat`, {method: 'DELETE'})
+      await fetch(`${REACT_APP_API_BASE_URL}/tables/${tableId}/seat`, {method: 'DELETE'})
       loadDashboard()
     }
   }

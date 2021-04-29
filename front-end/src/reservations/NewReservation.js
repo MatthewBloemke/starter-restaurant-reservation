@@ -5,6 +5,7 @@ import ErrorAlert from "../layout/ErrorAlert"
 import "./newReservation.css"
 
 function NewReservation() {
+    const {REACT_APP_API_BASE_URL} = process.env
     const history = useHistory()
     const initialFormState = {
         first_name: "",
@@ -32,6 +33,7 @@ function NewReservation() {
     }
 
     async function handleSubmit (event) {
+        
         const errorList = [];
         const invalidFields = []
         event.preventDefault();
@@ -68,7 +70,7 @@ function NewReservation() {
                 }
 
 
-                await fetch('http://localhost:5000/reservations', requestOptions)
+                await fetch(`${REACT_APP_API_BASE_URL}/reservations`, requestOptions)
 
                 history.push(`/dashboard?date=${formData.reservation_date}`);
             }
